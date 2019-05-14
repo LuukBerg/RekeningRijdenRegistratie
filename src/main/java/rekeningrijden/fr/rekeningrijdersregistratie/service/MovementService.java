@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import rekeningrijden.fr.rekeningrijdersregistratie.Repository.IMovementRepository;
+import rekeningrijden.fr.rekeningrijdersregistratie.jms.RegistratieGateway;
 import rekeningrijden.fr.rekeningrijdersregistratie.models.Movement;
 import rekeningrijden.fr.rekeningrijdersregistratie.models.Step;
 
@@ -11,6 +12,8 @@ import rekeningrijden.fr.rekeningrijdersregistratie.models.Step;
 public class MovementService {
     @Autowired
     IMovementRepository movementRepository;
+
+    private RegistratieGateway gateway = new RegistratieGateway();
 
     public void addStep(Step step){
         Movement movement = movementRepository.getByCartrackeraAndActive(step.getTrackerId());
