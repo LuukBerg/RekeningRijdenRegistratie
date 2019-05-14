@@ -1,6 +1,6 @@
-FROM openjdk:10-jre-slim
+FROM openjdk:8-jdk-slim
 
-COPY ./target/rekeningrijdersregistratie-0.1.jar /usr/src/reg/regdeployment/
+COPY ./target/rekeningrijdersregistratie-0.1.jar /usr/src/reg/
 
 WORKDIR /usr/src/reg
 
