@@ -1,0 +1,31 @@
+package rekeningrijden.fr.rekeningrijdersregistratie.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import rekeningrijden.fr.rekeningrijdersregistratie.Repository.IMovementRepository;
+import rekeningrijden.fr.rekeningrijdersregistratie.models.Movement;
+import rekeningrijden.fr.rekeningrijdersregistratie.models.Step;
+
+
+public class MovementService {
+    @Autowired
+    IMovementRepository movementRepository;
+
+    public void addStep(Step step){
+        Movement movement = movementRepository.getByCartrackeraAndActive(step.getTrackerId());
+        if(movement == null){
+            movement = new Movement(step.getTrackerId());
+            movementRepository.save(movement);
+        }
+        movement.getSteps().add(step);
+    }
+    public void endMovement(String trackerid){
+        Movement movement = movementRepository.getByCartrackeraAndActive(trackerid);
+        if(movement != null){
+            movement.setActive(false);
+            movementRepository.save(movement);
+        }
+
+    }
+}

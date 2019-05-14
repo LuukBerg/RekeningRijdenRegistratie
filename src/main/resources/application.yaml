@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.24.180:3306/registratie
+    password: root
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      generate-ddl: true
+      show-sql: true
+server:
+  port: 8083
+
+
