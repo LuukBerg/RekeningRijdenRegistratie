@@ -10,6 +10,6 @@ spring:
       generate-ddl: true
       show-sql: true
 server:
-  port: 8083
+  port: 8080
 
 

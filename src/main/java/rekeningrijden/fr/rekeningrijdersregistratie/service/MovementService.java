@@ -1,9 +1,7 @@
 package rekeningrijden.fr.rekeningrijdersregistratie.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import rekeningrijden.fr.rekeningrijdersregistratie.Repository.IMovementRepository;
+import rekeningrijden.fr.rekeningrijdersregistratie.repository.IMovementRepository;
 import rekeningrijden.fr.rekeningrijdersregistratie.jms.RegistratieGateway;
 import rekeningrijden.fr.rekeningrijdersregistratie.models.Movement;
 import rekeningrijden.fr.rekeningrijdersregistratie.models.Step;

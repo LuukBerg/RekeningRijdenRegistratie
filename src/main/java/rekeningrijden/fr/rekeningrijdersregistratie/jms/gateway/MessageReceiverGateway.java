@@ -1,20 +1,22 @@
-package rekeningrijden.fr.rekeningrijdersregistratie.jms.Gateway;
+package rekeningrijden.fr.rekeningrijdersregistratie.jms.gateway;
 
-
-
-import com.rabbitmq.client.*;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.DeliverCallback;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-public class MessageSenderGateway {
+public class MessageReceiverGateway {
+
     private Channel channel;
     private String channelName;
-    private String exchangeName = "";
-    public MessageSenderGateway(String channelName){
+
+    public MessageReceiverGateway(String channelName){
         this.channelName = channelName;
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("192.168.24.180:1011");
+        factory.setHost("192.168.24.180");
         factory.setPort(1011);
         Connection connection = null;
         try {
@@ -28,11 +30,16 @@ public class MessageSenderGateway {
         }
     }
 
-    public void SendMessage(String body, AMQP.BasicProperties props) throws IOException{
-        channel.basicPublish(exchangeName,channelName,props, body.getBytes());
-    }
-    public Channel getChannel(){
-        return channel;
+    public String setListener(DeliverCallback dc){
+        try {
+            return channel.basicConsume(channelName,true,dc,consumerTag ->{});
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
+    public Channel getChannel() {
+        return channel;
+    }
 }

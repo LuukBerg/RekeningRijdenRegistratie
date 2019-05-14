@@ -20,6 +20,5 @@ public class RegistratieResource {
     public void getMovements( @PathVariable("year") short year ,@PathVariable("month") Month month){
         LocalDate startDate = Year.of(year).atMonth(month).atDay(1);
         LocalDate endDate = Year.of(year).atMonth(month).atEndOfMonth();
-
     }
 }

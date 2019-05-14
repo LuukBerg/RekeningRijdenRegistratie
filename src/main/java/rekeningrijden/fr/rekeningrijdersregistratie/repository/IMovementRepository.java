@@ -1,4 +1,4 @@
-package rekeningrijden.fr.rekeningrijdersregistratie.Repository;
+package rekeningrijden.fr.rekeningrijdersregistratie.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
