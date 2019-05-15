@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import rekeningrijden.fr.rekeningrijdersregistratie.models.Step;
 import rekeningrijden.fr.rekeningrijdersregistratie.service.MovementService;
+import rekeningrijden.fr.rekeningrijdersregistratie.service.StepsService;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -16,9 +17,11 @@ public class RegistratieResource {
     @Autowired
     MovementService movementService;
 
-    @GetMapping(path = "/movements/{year}/{month}")
-    public void getMovements( @PathVariable("year") short year ,@PathVariable("month") Month month){
-        LocalDate startDate = Year.of(year).atMonth(month).atDay(1);
-        LocalDate endDate = Year.of(year).atMonth(month).atEndOfMonth();
+    @Autowired
+    StepsService stepsService;
+
+    @GetMapping(path = "/movements/{start}/{end}/{pagenumber}")
+    public void getMovements( @PathVariable("start") long start ,@PathVariable("end") long end, @PathVariable("pagenumber") int pagenumber){
+        stepsService.getSteps(start, end, pagenumber);
     }
 }
