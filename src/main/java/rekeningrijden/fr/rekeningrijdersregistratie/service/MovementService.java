@@ -28,10 +28,11 @@ public class MovementService {
             movement.setActive(true);
             movement = movementRepository.save(movement);
         }
-        movement.getSteps().add(step);
-        stepRepository.save(step);
-        System.out.println(step);
-        movementRepository.save(movement);
+        if(movement.getId() != 0){
+            step.setMovement(movement);
+            stepRepository.save(step);
+        }
+
 
     }
     public void endMovement(String trackerid){

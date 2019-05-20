@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
@@ -24,6 +21,9 @@ public class Step {
     private Date timestamp;
     @Transient
     private String trackerId;
+    @ManyToOne
+    @JoinColumn(name = "movementid")
+    private Movement movement;
 
     public Step(double x, double y, Date timestamp) {
         this.x = x;

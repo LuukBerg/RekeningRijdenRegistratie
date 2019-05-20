@@ -17,15 +17,12 @@ public class Movement {
     @GeneratedValue
     @Id
     private long id;
-    @OneToMany(cascade = CascadeType.PERSIST)
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Step> steps;
+
     private String cartracker;
     private Boolean active;
 
     public Movement(String cartracker) {
         this.cartracker = cartracker;
-        steps = new ArrayList<>();
     }
 
 
