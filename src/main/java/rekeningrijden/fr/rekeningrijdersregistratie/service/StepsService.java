@@ -3,16 +3,18 @@ package rekeningrijden.fr.rekeningrijdersregistratie.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import rekeningrijden.fr.rekeningrijdersregistratie.models.Step;
 import rekeningrijden.fr.rekeningrijdersregistratie.repository.IStepRepository;
 
 import java.util.Date;
 import java.util.List;
 
+@Service
 public class StepsService {
 
     @Autowired
-    IStepRepository stepRepository;
+    private IStepRepository stepRepository;
 
     private final static int PAGESIZE = 1000;
 
