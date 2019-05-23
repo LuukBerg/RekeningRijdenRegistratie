@@ -23,7 +23,7 @@ public class StepDTO {
     public static List<StepDTO> transform(List<Step> steps){
         List<StepDTO> dtos = new ArrayList<>();
         for (Step step : steps){
-            dtos.add(new StepDTO(step.getX(),step.getY(),step.getTimestamp(),step.getTrackerId()));
+            dtos.add(new StepDTO(step.getX(),step.getY(),step.getTimestamp(),step.getMovement().getCartracker()));
         }
         return dtos;
     }
