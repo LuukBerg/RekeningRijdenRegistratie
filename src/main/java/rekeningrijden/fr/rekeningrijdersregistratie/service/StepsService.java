@@ -23,7 +23,8 @@ public class StepsService {
         Pageable pageRequest = PageRequest.of(pagenumber,PAGESIZE);
         System.out.println(new Date(start));
         System.out.println(new Date(end));
-        return stepRepository.getStepsByDate(new Date(start), new Date(end), pageRequest);
+        System.out.println(pagenumber);
+        return stepRepository.getStepsByDate(start, end, pageRequest);
 
     }
 }
