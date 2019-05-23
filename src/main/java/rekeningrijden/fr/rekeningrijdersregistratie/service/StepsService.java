@@ -21,6 +21,8 @@ public class StepsService {
 
     public List<Step> getSteps(long start, long end, int pagenumber) {
         Pageable pageRequest = PageRequest.of(pagenumber,PAGESIZE);
+        System.out.println(new Date(start));
+        System.out.println(new Date(end));
         return stepRepository.getStepsByDate(new Date(start), new Date(end), pageRequest);
 
     }
