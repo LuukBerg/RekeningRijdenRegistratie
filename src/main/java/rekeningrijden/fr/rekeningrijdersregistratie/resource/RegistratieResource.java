@@ -24,6 +24,7 @@ public class RegistratieResource {
     StepsService stepsService;
 
 
+    //TODO fix start end and paging
     @GetMapping(path = "/movements/{start}/{end}/{pagenumber}")
     public List<StepDTO> getMovements(@PathVariable("start") long start , @PathVariable("end") long end, @PathVariable("pagenumber") int pagenumber){
         return StepDTO.transform(stepsService.getSteps(start, end, pagenumber));
