@@ -10,6 +10,7 @@ import rekeningrijden.fr.rekeningrijdersregistratie.service.StepsService;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api")
@@ -23,7 +24,7 @@ public class RegistratieResource {
 
 
     @GetMapping(path = "/movements/{start}/{end}/{pagenumber}")
-    public void getMovements( @PathVariable("start") long start ,@PathVariable("end") long end, @PathVariable("pagenumber") int pagenumber){
-        stepsService.getSteps(start, end, pagenumber);
+    public List<Step> getMovements(@PathVariable("start") long start , @PathVariable("end") long end, @PathVariable("pagenumber") int pagenumber){
+        return stepsService.getSteps(start, end, pagenumber);
     }
 }
