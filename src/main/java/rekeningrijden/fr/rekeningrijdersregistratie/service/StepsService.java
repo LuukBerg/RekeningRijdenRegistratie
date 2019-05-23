@@ -24,7 +24,8 @@ public class StepsService {
         System.out.println(new Date(start));
         System.out.println(new Date(end));
         System.out.println(pagenumber);
-        return stepRepository.getStepsByDate(new Date(start), new Date(end), pageRequest);
+        return stepRepository.getStepsByDate();
+                // new Date(start), new Date(end), pageRequest);
 
     }
 }
