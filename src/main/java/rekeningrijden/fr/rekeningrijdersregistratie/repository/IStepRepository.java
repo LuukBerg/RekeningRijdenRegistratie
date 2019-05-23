@@ -14,7 +14,7 @@ import java.util.List;
 
 public interface IStepRepository extends PagingAndSortingRepository<Step, Long> {
 
-    @Query("SELECT s FROM Step s WHERE s.timestamp BETWEEN :start AND :end")
+    @Query("SELECT s FROM Step s WHERE s.timestamp >= :start AND s.timestamp <= :end ORDER BY s.trackerId")
     List<Step> getStepsByDate(@Param("start") Date start, @Param("end") Date end, Pageable pageable);
 
 }
