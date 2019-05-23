@@ -19,7 +19,6 @@ public class Step {
     private double x;
     private double y;
     private Date timestamp;
-    @Transient
     private String trackerId;
     @ManyToOne
     @JoinColumn(name = "movementid")
