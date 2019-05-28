@@ -6,12 +6,15 @@ import rekeningrijden.fr.rekeningrijdersregistratie.models.StepDTO;
 import rekeningrijden.fr.rekeningrijdersregistratie.service.MovementService;
 import rekeningrijden.fr.rekeningrijdersregistratie.service.StepsService;
 
+import java.util.Date;
 import java.util.List;
+
+import javax.websocket.server.PathParam;
 
 @RestController
 @RequestMapping(path = "/api")
-public class RegistratieResource {
-
+public class RegistratieResource
+{
     @Autowired
     MovementService movementService;
 
@@ -24,6 +27,16 @@ public class RegistratieResource {
         @RequestParam("end") long end,
         @RequestParam("page") int pagenumber)
     {
-        return StepDTO.transform(stepsService.getSteps(start, end, pagenumber));
+        return StepDTO.transform(stepsService.getSteps(new Date(start), new Date(end), pagenumber));
+    }
+
+    @GetMapping(path = "/tracker/{tracker}/movements")
+    public List<StepDTO> getMovements(
+        @PathParam("tracker") String tracker,
+        @RequestParam("start") long start,
+        @RequestParam("end") long end,
+        @RequestParam("page") int pagenumber)
+    {
+        return StepDTO.transform(stepsService.getTrackerSteps(tracker, new Date(start), new Date(end), pagenumber));
     }
 }

@@ -11,21 +11,22 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class StepsService {
-
+public class StepsService
+{
     @Autowired
     private IStepRepository stepRepository;
 
     private final static int PAGESIZE = 1000;
 
-
-    public List<Step> getSteps(long start, long end, int pagenumber) {
+    public List<Step> getSteps(Date start, Date end, int pagenumber)
+    {
         Pageable pageRequest = PageRequest.of(pagenumber,PAGESIZE);
-        System.out.println(new Date(start));
-        System.out.println(new Date(end));
-        System.out.println(pagenumber);
-        return stepRepository.getStepsByDate(new Date(start), new Date(end), pageRequest);
-                // new Date(start), new Date(end), pageRequest);
+        return stepRepository.getStepsByDate(start, end, pageRequest);
+    }
 
+    public List<Step> getTrackerSteps(String tracker, Date start, Date end, int pagenumber)
+    {
+        Pageable pageRequest = PageRequest.of(pagenumber,PAGESIZE);
+        return stepRepository.getStepsByTracker(tracker, start, end, pageRequest);
     }
 }
