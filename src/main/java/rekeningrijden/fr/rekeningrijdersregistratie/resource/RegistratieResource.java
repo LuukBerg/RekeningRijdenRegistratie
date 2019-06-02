@@ -2,6 +2,7 @@ package rekeningrijden.fr.rekeningrijdersregistratie.resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import rekeningrijden.fr.rekeningrijdersregistratie.models.Step;
 import rekeningrijden.fr.rekeningrijdersregistratie.models.StepDTO;
 import rekeningrijden.fr.rekeningrijdersregistratie.service.MovementService;
 import rekeningrijden.fr.rekeningrijdersregistratie.service.StepsService;
@@ -41,6 +42,9 @@ public class RegistratieResource
 
     @GetMapping(path = "/tracker/{tracker}/movement")
     public StepDTO getLatestStepByTracker(@PathVariable("tracker") String tracker){
-        return StepDTO.transform(stepsService.getLatestStepByTracker(tracker));
+
+        List<Step> steps = stepsService.getLatestStepByTracker(tracker);
+
+        return StepDTO.transform(steps.get(0));
     }
 }

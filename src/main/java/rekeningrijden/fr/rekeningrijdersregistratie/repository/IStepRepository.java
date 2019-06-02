@@ -18,5 +18,5 @@ public interface IStepRepository extends PagingAndSortingRepository<Step, Long>
     List<Step> getStepsByTracker(@Param("tracker") String tracker,  @Param("start") Date start, @Param("end") Date end, Pageable pageable);
 
     @Query("SELECT s FROM Step s WHERE s.trackerId = :tracker ORDER BY s.timestamp DESC")
-    Step getLatestStepByTracker(@Param("tracker") String tracker, Pageable pageable);
+    List<Step> getLatestStepByTracker(@Param("tracker") String tracker, Pageable pageable);
 }
