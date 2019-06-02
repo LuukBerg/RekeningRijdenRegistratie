@@ -30,7 +30,7 @@ public class StepsService
         return stepRepository.getStepsByTracker(tracker, start, end, pageRequest);
     }
 
-    public Step getLatestStepByTracker(String tracker){
+    public List<Step> getLatestStepByTracker(String tracker){
         return stepRepository.getLatestStepByTracker(tracker);
     }
 }
