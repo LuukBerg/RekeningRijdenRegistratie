@@ -36,4 +36,9 @@ public class StepDTO
         }
         return result;
     }
+
+    public static StepDTO transform(Step step)
+    {
+        return new StepDTO(step);
+    }
 }
