@@ -39,4 +39,9 @@ public class RegistratieResource
     {
         return StepDTO.transform(stepsService.getTrackerSteps(tracker, new Date(start), new Date(end), pagenumber));
     }
+
+    @GetMapping(path = "/tracker/{tracker}/movement")
+    public StepDTO getLatestStepByTracker(@PathParam("tracker") String tracker){
+        return null;
+    }
 }
