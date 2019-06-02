@@ -41,10 +41,7 @@ public class RegistratieResource
     }
 
     @GetMapping(path = "/tracker/{tracker}/movement")
-    public StepDTO getLatestStepByTracker(@PathVariable("tracker") String tracker){
-
-        List<Step> steps = stepsService.getLatestStepByTracker(tracker);
-
-        return StepDTO.transform(steps.get(0));
+    public List<StepDTO> getLatestStepByTracker(@PathVariable("tracker") String tracker){
+        return StepDTO.transform(stepsService.getLatestStepByTracker(tracker));
     }
 }
