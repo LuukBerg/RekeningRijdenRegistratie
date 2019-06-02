@@ -29,4 +29,8 @@ public class StepsService
         Pageable pageRequest = PageRequest.of(pagenumber,PAGESIZE);
         return stepRepository.getStepsByTracker(tracker, start, end, pageRequest);
     }
+
+    public Step getLatestStepByTracker(String tracker){
+        return stepRepository.getLatestStepByTracker(tracker);
+    }
 }
