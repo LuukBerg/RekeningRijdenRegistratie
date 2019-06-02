@@ -31,6 +31,7 @@ public class StepsService
     }
 
     public List<Step> getLatestStepByTracker(String tracker){
-        return stepRepository.getLatestStepByTracker(tracker, PageRequest.of(0, 1));
+        Pageable pageRequest = PageRequest.of(0,1);
+        return stepRepository.getLatestStepByTracker(tracker, pageRequest);
     }
 }
