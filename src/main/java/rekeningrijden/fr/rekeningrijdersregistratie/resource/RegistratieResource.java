@@ -1,17 +1,17 @@
 package rekeningrijden.fr.rekeningrijdersregistratie.resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.web.bind.annotation.*;
-import rekeningrijden.fr.rekeningrijdersregistratie.models.Step;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import rekeningrijden.fr.rekeningrijdersregistratie.models.StepDTO;
 import rekeningrijden.fr.rekeningrijdersregistratie.service.MovementService;
 import rekeningrijden.fr.rekeningrijdersregistratie.service.StepsService;
 
+import javax.websocket.server.PathParam;
 import java.util.Date;
 import java.util.List;
-
-import javax.websocket.server.PathParam;
 
 @RestController
 @RequestMapping(path = "/api")
@@ -43,7 +43,9 @@ public class RegistratieResource
     }
 
     @GetMapping(path = "/tracker/{tracker}/movement")
-    public List<StepDTO> getLatestStepByTracker(@PathParam("tracker") String tracker){
-        return StepDTO.transform(stepsService.getLatestStepByTracker(tracker));
+    public String getLatestStepByTracker(@PathParam("tracker") String tracker){
+
+        return "test: " + tracker;
+        //return StepDTO.transform(stepsService.getLatestStepByTracker(tracker));
     }
 }
