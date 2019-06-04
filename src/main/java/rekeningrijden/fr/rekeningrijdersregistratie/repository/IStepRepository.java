@@ -14,7 +14,7 @@ public interface IStepRepository extends PagingAndSortingRepository<Step, Long>
     @Query("SELECT s FROM Step s WHERE s.timestamp >= :start AND s.timestamp <= :end ORDER BY s.trackerId, s.timestamp ASC")
     List<Step> getStepsByDate(@Param("start") Date start, @Param("end") Date end, Pageable pageable);
 
-    @Query("SELECT s FROM Step s WHERE  s.trackerId = :tracker ORDER BY s.timestamp ASC") // s.timestamp >= :start AND s.timestamp <= :end AND
+    @Query("SELECT s FROM Step s WHERE s.timestamp >= :start AND s.timestamp <= :end AND s.trackerId = :tracker ORDER BY s.timestamp ASC")
     List<Step> getStepsByTracker(@Param("tracker") String tracker,  @Param("start") Date start, @Param("end") Date end, Pageable pageable);
 
     @Query("SELECT s FROM Step s WHERE s.trackerId = :tracker ORDER BY s.timestamp DESC")
