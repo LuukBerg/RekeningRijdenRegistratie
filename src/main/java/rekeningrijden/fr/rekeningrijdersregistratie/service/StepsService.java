@@ -26,7 +26,7 @@ public class StepsService
 
     public List<Step> getTrackerSteps(String tracker, Date start, Date end, int pagenumber)
     {
-        Pageable pageRequest = PageRequest.of(pagenumber,PAGESIZE);
+        Pageable pageRequest = PageRequest.of(pagenumber, PAGESIZE);
         return stepRepository.getStepsByTracker(tracker, start, end, pageRequest);
     }
 

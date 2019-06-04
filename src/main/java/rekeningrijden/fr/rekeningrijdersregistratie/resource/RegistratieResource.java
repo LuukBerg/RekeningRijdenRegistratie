@@ -36,6 +36,7 @@ public class RegistratieResource
         @RequestParam("end") long end,
         @RequestParam("page") int pagenumber)
     {
+        System.out.println(tracker);
         return StepDTO.transform(stepsService.getTrackerSteps(tracker, new Date(start), new Date(end), pagenumber));
     }
 
