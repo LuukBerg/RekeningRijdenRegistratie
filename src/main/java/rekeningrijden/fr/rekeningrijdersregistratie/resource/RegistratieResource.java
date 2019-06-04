@@ -6,7 +6,6 @@ import rekeningrijden.fr.rekeningrijdersregistratie.models.StepDTO;
 import rekeningrijden.fr.rekeningrijdersregistratie.service.MovementService;
 import rekeningrijden.fr.rekeningrijdersregistratie.service.StepsService;
 
-import javax.websocket.server.PathParam;
 import java.util.Date;
 import java.util.List;
 
@@ -31,7 +30,7 @@ public class RegistratieResource
 
     @GetMapping(path = "/tracker/{tracker}/movements")
     public List<StepDTO> getMovements(
-        @PathParam("tracker") String tracker,
+        @PathVariable("tracker") String tracker,
         @RequestParam("start") long start,
         @RequestParam("end") long end,
         @RequestParam("page") int pagenumber)
