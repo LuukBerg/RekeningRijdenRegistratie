@@ -34,9 +34,10 @@ public class RegistratieResource
         @PathVariable("tracker") String tracker,
         @RequestParam("start") long start,
         @RequestParam("end") long end,
-        @RequestParam("page") int pagenumber)
+        @RequestParam("page") int pagenumber,
+        @RequestParam("pagesize") int pagesize)
     {
-        return StepDTO.transform(stepsService.getTrackerSteps(tracker, new Date(start), new Date(end), pagenumber));
+        return StepDTO.transform(stepsService.getTrackerSteps(tracker, new Date(start), new Date(end), pagenumber, pagesize));
     }
 
     @GetMapping(path = "/tracker/{tracker}/movement")
