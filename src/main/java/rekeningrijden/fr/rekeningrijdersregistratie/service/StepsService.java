@@ -16,17 +16,15 @@ public class StepsService
     @Autowired
     private IStepRepository stepRepository;
 
-    private final static int PAGESIZE = 1000;
-
-    public List<Step> getSteps(Date start, Date end, int pagenumber)
+    public List<Step> getSteps(Date start, Date end, int pagenumber, int pagesize)
     {
-        Pageable pageRequest = PageRequest.of(pagenumber,PAGESIZE);
+        Pageable pageRequest = PageRequest.of(pagenumber,pagesize);
         return stepRepository.getStepsByDate(start, end, pageRequest);
     }
 
-    public List<Step> getTrackerSteps(String tracker, Date start, Date end, int pagenumber)
+    public List<Step> getTrackerSteps(String tracker, Date start, Date end, int pagenumber, int pagesize)
     {
-        Pageable pageRequest = PageRequest.of(pagenumber, PAGESIZE);
+        Pageable pageRequest = PageRequest.of(pagenumber, pagesize);
         return stepRepository.getStepsByTracker(tracker, start, end, pageRequest);
     }
 
