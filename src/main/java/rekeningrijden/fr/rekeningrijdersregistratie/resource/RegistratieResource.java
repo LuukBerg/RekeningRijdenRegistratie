@@ -23,9 +23,10 @@ public class RegistratieResource
     public List<StepDTO> getMovements(
         @RequestParam("start") long start,
         @RequestParam("end") long end,
-        @RequestParam("page") int pagenumber)
+        @RequestParam("page") int pagenumber,
+        @RequestParam("pagesize") int pagesize)
     {
-        return StepDTO.transform(stepsService.getSteps(new Date(start), new Date(end), pagenumber));
+        return StepDTO.transform(stepsService.getSteps(new Date(start), new Date(end), pagenumber, pagesize));
     }
 
     @GetMapping(path = "/tracker/{tracker}/movements")
